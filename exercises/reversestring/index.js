@@ -6,6 +6,8 @@
 //   reverse('hello') === 'olleh'
 //   reverse('Greetings!') === '!sgniteerG'
 
+
+// My solution
 function reverse(str) {
   let chars = str.split("");
   let reversedChars = [];
