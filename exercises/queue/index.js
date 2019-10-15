@@ -8,6 +8,20 @@
 //     q.add(1);
 //     q.remove(); // returns 1;
 
-class Queue {}
+// My solution -- same as video solution
+class Queue {
+
+  constructor() {
+    this.data = [];
+  }
+
+  add(arg) {
+    this.data.unshift(arg)
+  }
+
+  remove() {
+    return this.data.pop()
+  }
+}
 
 module.exports = Queue;
