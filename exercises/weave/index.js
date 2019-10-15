@@ -24,6 +24,20 @@
 
 const Queue = require('./queue');
 
-function weave(sourceOne, sourceTwo) {}
+// My solution
+// Matches video mostly except in while uses 'sourceOne.peek() || sourceOne.peek()'
+function weave(sourceOne, sourceTwo) {
+
+  const newQ = new Queue();
+  while (!(sourceOne.peek() === undefined && sourceTwo.peek() === undefined)) {
+    if (sourceOne.peek()) {
+      newQ.add(sourceOne.remove())
+    }
+    if (sourceTwo.peek()) {
+      newQ.add(sourceTwo.remove())
+    }
+  }
+  return newQ
+}
 
 module.exports = weave;
