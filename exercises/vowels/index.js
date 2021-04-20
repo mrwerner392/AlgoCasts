@@ -7,18 +7,28 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-// My solution, recursion probably unnecessary but practicing while its fresh in mind
-function vowels(str, count = 0, index = 0) {
-  if (index === str.length) {
-    return count;
+const vow = ['A','E','I','O','U','a','e','i','o','u']
+
+const vowels = string => {
+  let count = 0
+  for (let char of string) {
+    if (vow.indexOf(char) > -1) count++
   }
-
-  if (/[aeiouAEIOU]/.test(str[index])) {
-    count++;
-  };
-
-  return vowels(str, count, ++index);
+  return count
 }
+
+// // My solution, recursion probably unnecessary but practicing while its fresh in mind
+// function vowels(str, count = 0, index = 0) {
+//   if (index === str.length) {
+//     return count;
+//   }
+
+//   if (/[aeiouAEIOU]/.test(str[index])) {
+//     count++;
+//   };
+
+//   return vowels(str, count, ++index);
+// }
 
 module.exports = vowels;
 

@@ -8,6 +8,26 @@
 // Example:
 //   fib(4) === 3
 
+
+const fib = n => {
+  let index = 0
+  let prev = 0
+  let current = 0
+  while (index <= n) {
+    if (index === n) {
+      return current
+    }
+    if (index === 0) {
+      current = 1
+    } else {
+      let newPrev = current
+      current = current + prev
+      prev = newPrev
+    }
+    index++
+  }
+}
+
 // My solution
 // function fib(n) {
 //
@@ -55,29 +75,30 @@
 //   return fib(n - 1) + fib(n - 2);
 // };
 
-// Video solution #3 memoization
-function memoize(fn) {
-  const cache = {};
-  return function(...args) {
-    if (cache[args]) {
-      return cache[args];
-    };
+// // Video solution #3 memoization
+// function memoize(fn) {
+//   const cache = {};
+//   return function(...args) {
+//     if (cache[args]) {
+//       return cache[args];
+//     };
 
-    const result = fn.apply(this, args);
-    cache[args] = result;
-    return result;
-  };
-};
+//     // const result = fn(args);
+//     const result = fn.apply(this, args);
+//     cache[args] = result;
+//     return result;
+//   };
+// };
 
-function fib(n) {
-  if (n < 2) {
-    return n;
-  }
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
 
-  return fib(n - 1) + fib(n - 2);
-};
+//   return fib(n - 1) + fib(n - 2);
+// };
 
 
-fib = memoize(fib);
+// fib = memoize(fib);
 
 module.exports = fib;

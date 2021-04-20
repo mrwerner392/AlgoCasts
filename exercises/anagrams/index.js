@@ -8,47 +8,65 @@
 //   anagrams('RAIL! SAFETY!', 'fairy tales') --> True
 //   anagrams('Hi there', 'Bye there') --> False
 
+const anagrams = (string1, string2) => {
+  const str1 = string1.replace(/[^A-Za-z]/g, '')
+  const str2 = string2.replace(/[^A-Za-z]/g, '')
+  if (str1.length !== str2.length) return false
+  const getCharMap = str => {
+    const result = {}
+    for (let char of str) {
+      result[char] ? result[char]++ : result[char] = 1
+    }
+    return result
+  }
+  const charMap1 = getCharMap(str1)
+  const charMap2 = getCharMap(str2)
+  for (let char in charMap1) {
+    if (charMap1[char] !== charMap2[char]) return false
+  }
+  return true
+}
 
 // My solution, but doesn't account for non-letters/upper and lower case
-function anagrams(stringA, stringB) {
-  const charsA = {};
-  const charsB = {};
-  let numCharsA = 0;
-  let numCharsB = 0;
+// function anagrams(stringA, stringB) {
+//   const charsA = {};
+//   const charsB = {};
+//   let numCharsA = 0;
+//   let numCharsB = 0;
 
-  for (let char of stringA) {
-    if (charsA[char]) {
-      charsA[char]++;
-    } else {
-      charsA[char] = 1;
-      numCharsA++;
-    };
-  };
+//   for (let char of stringA) {
+//     if (charsA[char]) {
+//       charsA[char]++;
+//     } else {
+//       charsA[char] = 1;
+//       numCharsA++;
+//     };
+//   };
 
-  for (let char of stringB) {
-    if (charsB[char]) {
-      charsB[char]++;
-    } else {
-      charsB[char] = 1;
-      numCharsB++;
-    };
-  };
+//   for (let char of stringB) {
+//     if (charsB[char]) {
+//       charsB[char]++;
+//     } else {
+//       charsB[char] = 1;
+//       numCharsB++;
+//     };
+//   };
 
-  let checker = true;
+//   let checker = true;
 
-  if (numCharsA !== numCharsB) {
-    return false;
-  };
+//   if (numCharsA !== numCharsB) {
+//     return false;
+//   };
 
-  for (let key in charsA) {
-    if (charsA[key] !== charsB[key]) {
-      return false;
-    };
-  };
+//   for (let key in charsA) {
+//     if (charsA[key] !== charsB[key]) {
+//       return false;
+//     };
+//   };
 
-  return true;
+//   return true;
 
-};
+// };
 
 module.exports = anagrams;
 

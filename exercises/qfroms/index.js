@@ -12,43 +12,67 @@
 //     q.remove(); // returns 1
 //     q.remove(); // returns 2
 
-
-// My solution -- matches video solution
 const Stack = require('./stack');
 
 class Queue {
-
-
   constructor() {
-    this.stackOne = new Stack();
-    this.stackTwo = new Stack();
-  };
+    this.s1 = new Stack()
+    this.s2 = new Stack()
+  }
 
-  add(item) {
-    this.stackOne.push(item);
-  };
+  add(newData) {
+    while (this.s1.peek()) {
+      this.s2.push(this.s1.pop())
+    }
+    this.s1.push(newData)
+    while (this.s2.peek()) {
+      this.s1.push(this.s2.pop())
+    }
+  }
 
   remove() {
-    while (this.stackOne.peek()) {
-      this.stackTwo.push(this.stackOne.pop());
-    };
-    const removedItem = this.stackTwo.pop();
-    while (this.stackTwo.peek()) {
-      this.stackOne.push(this.stackTwo.pop());
-    };
-    return removedItem;
-  };
+    return this.s1.pop()
+  }
 
   peek() {
-    while (this.stackOne.peek()) {
-      this.stackTwo.push(this.stackOne.pop());
-    };
-    const peekedItem = this.stackTwo.peek();
-    while (this.stackTwo.peek()) {
-      this.stackOne.push(this.stackTwo.pop());
-    };
-    return peekedItem;
-  };
-};
+    return this.s1.data[this.s1.data.length - 1]
+  }
+}
+
+// // My solution -- matches video solution
+
+// class Queue {
+
+//   constructor() {
+//     this.stackOne = new Stack();
+//     this.stackTwo = new Stack();
+//   };
+
+//   add(item) {
+//     this.stackOne.push(item);
+//   };
+
+//   remove() {
+//     while (this.stackOne.peek()) {
+//       this.stackTwo.push(this.stackOne.pop());
+//     };
+//     const removedItem = this.stackTwo.pop();
+//     while (this.stackTwo.peek()) {
+//       this.stackOne.push(this.stackTwo.pop());
+//     };
+//     return removedItem;
+//   };
+
+//   peek() {
+//     while (this.stackOne.peek()) {
+//       this.stackTwo.push(this.stackOne.pop());
+//     };
+//     const peekedItem = this.stackTwo.peek();
+//     while (this.stackTwo.peek()) {
+//       this.stackOne.push(this.stackTwo.pop());
+//     };
+//     return peekedItem;
+//   };
+// };
 
 module.exports = Queue;

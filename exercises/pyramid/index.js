@@ -14,20 +14,41 @@
 //       ' ### '
 //       '#####'
 
-// My solution
-function pyramid(n) {
-  for (let row = 0; row < n; row++) {
-    let str = '';
-    for (let col = 0; col < n-1; col++) {
-      if (col + row + 2 <= n) {
-        str += ' ';
+const pyramid = n => {
+  const buildStr = i => {
+    let str = ''
+    const numHash = 2 * i - 1
+    const numSpace = n - i
+    for (let j = 1; j <= 2*n - 1; j++) {
+      if (j <= numSpace) {
+        str += ' '
+      } else if (j <= (numSpace + numHash)) {
+        str += '#'
       } else {
-        str += '#';
-      };
-    };
-    console.log(str + '#' + str.split('').reverse().join(''));
-  };
-};
+        str += ' '
+      }
+    }
+    return str
+  }
+  for (let i = 1; i <= n; i++) {
+    console.log(buildStr(i))
+  }
+}
+
+// // My solution
+// function pyramid(n) {
+//   for (let row = 0; row < n; row++) {
+//     let str = '';
+//     for (let col = 0; col < n-1; col++) {
+//       if (col + row + 2 <= n) {
+//         str += ' ';
+//       } else {
+//         str += '#';
+//       };
+//     };
+//     console.log(str + '#' + str.split('').reverse().join(''));
+//   };
+// };
 
 module.exports = pyramid;
 

@@ -17,19 +17,31 @@
 //       '### '
 //       '####'
 
-
-// My solution
-function steps(n) {
-  let str = '';
+const steps = n => {
+  const buildStr = i => {
+    let str = ''
+    for (let j = 1; j <= n; j++) {
+      str += j <= i ? '#' : ' '
+    }
+    return str
+  }
   for (let i = 1; i <= n; i++) {
-    str += ' ';
-  };
+    console.log(buildStr(i))
+  }
+}
 
-  for (let i = 0; i < n; i++) {
-    str = '#' + str.slice(0, n-1);
-    console.log(str);
-  };
-};
+// // My solution
+// function steps(n) {
+//   let str = '';
+//   for (let i = 1; i <= n; i++) {
+//     str += ' ';
+//   };
+
+//   for (let i = 0; i < n; i++) {
+//     str = '#' + str.slice(0, n-1);
+//     console.log(str);
+//   };
+// };
 
 module.exports = steps;
 

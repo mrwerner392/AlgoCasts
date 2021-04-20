@@ -12,21 +12,37 @@
 //   4
 //   buzz
 
-
-// My solution
-// Matches video solution
-function fizzBuzz(n) {
-  for (let i = 1; i <= n; i++) {
-    if (i % 5 === 0 && i % 3 === 0) {
-      console.log('fizzbuzz');
+const fizzBuzz = n => {
+  let i = 1
+  while (i <= n) {
+    if (i % 15 === 0) {
+      console.log('fizzbuzz')
     } else if (i % 5 === 0) {
-      console.log('buzz');
+      console.log('buzz')
     } else if (i % 3 === 0) {
-      console.log('fizz');
+      console.log('fizz')
     } else {
-      console.log(i);
-    };
-  };
-};
+      console.log(i)
+    }
+    i++
+  }
+}
+
+
+// // My solution
+// // Matches video solution
+// function fizzBuzz(n) {
+//   for (let i = 1; i <= n; i++) {
+//     if (i % 5 === 0 && i % 3 === 0) {
+//       console.log('fizzbuzz');
+//     } else if (i % 5 === 0) {
+//       console.log('buzz');
+//     } else if (i % 3 === 0) {
+//       console.log('fizz');
+//     } else {
+//       console.log(i);
+//     };
+//   };
+// };
 
 module.exports = fizzBuzz;

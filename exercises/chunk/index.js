@@ -9,20 +9,29 @@
 // chunk([1, 2, 3, 4, 5], 10) --> [[ 1, 2, 3, 4, 5]]
 
 
-// My solution
-function chunk(array, size) {
-  const subArrs = [];
-  while (array.length >= size) {
-    subArrs.push(array.slice(0,size));
-    array = array.slice(size);
-  };
+const chunk = (arr, chunk) => {
+  const result = []
+  while (arr.length > chunk) {
+    result.push(arr.splice(0,chunk))
+  }
+  if (arr.length) result.push(arr)
+  return result
+}
 
-  if (array.length > 0) {
-    subArrs.push(array.slice(0))
-  };
+// // My solution
+// function chunk(array, size) {
+//   const subArrs = [];
+//   while (array.length >= size) {
+//     subArrs.push(array.slice(0,size));
+//     array = array.slice(size);
+//   };
 
-  return subArrs;
-};
+//   if (array.length > 0) {
+//     subArrs.push(array.slice(0))
+//   };
+
+//   return subArrs;
+// };
 
 module.exports = chunk;
 
